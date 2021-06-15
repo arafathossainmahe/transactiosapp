@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:transactiosapp/home.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -107,7 +108,10 @@ class _LoginPageState extends State<LoginPage> {
                       borderRadius: BorderRadius.circular(30),
                     ),
                     child: FlatButton(
-                      onPressed: () {},
+                      onPressed: () {
+                         Route route=MaterialPageRoute(builder: (context)=>HomePage());
+                      Navigator.push(context, route);
+                      },
                       child: Text(
                         'Signin',
                         style: TextStyle(
