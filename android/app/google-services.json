@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "779764358668",
+    "project_id": "transactiosapp",
+    "storage_bucket": "transactiosapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:779764358668:android:1ea5f0e48e45db6ae59829",
+        "android_client_info": {
+          "package_name": "com.example.transactiosapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "779764358668-t0pk8nek2igpd862f23a1slm02af3njj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.transactiosapp",
+            "certificate_hash": "945acbe25d2e53a82fc332585ab1cf8e40be53be"
+          }
+        },
+        {
+          "client_id": "779764358668-asf50rejrdsbj04cuorbtv73hsa3mj7g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPEmDHSXVCKQCyW6f3K8XDM9hVzEx5d1M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "779764358668-asf50rejrdsbj04cuorbtv73hsa3mj7g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,13 +1,29 @@
-import 'package:flutter/material.dart';
-import 'package:transactiosapp/home.dart';
-import 'package:transactiosapp/signuppage.dart';
+import 'dart:js';
 
-class LoginPage extends StatefulWidget {
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+
+import 'home.dart';
+
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({Key? key}) : super(key: key);
+
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _SignUpPageState createState() => _SignUpPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignUpPageState extends State<SignUpPage> {
+  var email;
+  var password;
+  SignUp () async{
+    FirebaseAuth firebaseAuth=FirebaseAuth.instance;
+    FirebaseUser user=(await firebaseAuth.createUserWithEmailAndPassword(email: email, password: password)).user;
+    // ignore: dead_code
+    if(user=null!){
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
+    }
+  }
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -53,7 +69,10 @@ class _LoginPageState extends State<LoginPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text('Email Address'),
-                          TextField(
+                          TextFormField(
+                            onChanged: (value){setState(() {
+                              email=value;
+                            },);},
                             decoration: InputDecoration(
                                 border: InputBorder.none,
                                 hintText: 'Enter email',
@@ -85,10 +104,48 @@ class _LoginPageState extends State<LoginPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text('Enter Password'),
-                          TextField(
+                          TextFormField(
+                            onChanged: (value){setState(() {
+                              password=value;
+                            },);},
                             decoration: InputDecoration(
                                 border: InputBorder.none,
                                 hintText: 'Password',
+                                icon: Icon(Icons.lock)),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20, right: 20),
+                  child: Container(
+                    width: size.width,
+                    height: 80,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(25),
+                      boxShadow: [
+                        BoxShadow(blurRadius: 5),
+                      ],
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 20, top: 15),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Re-Enter Password'),
+                          TextFormField(
+                            onChanged: (value){setState(() {
+                              password=value;
+                            },);},
+                            decoration: InputDecoration(
+                                border: InputBorder.none,
+                                hintText: 'Re-Password',
                                 icon: Icon(Icons.lock)),
                           ),
                         ],
@@ -110,11 +167,12 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     child: FlatButton(
                       onPressed: () {
-                         Route route=MaterialPageRoute(builder: (context)=>HomePage());
-                      Navigator.push(context, route);
+                        Route route =
+                            MaterialPageRoute(builder: (context) => HomePage());
+                        Navigator.push(context, route);
                       },
                       child: Text(
-                        'Signin',
+                        'SignUp',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 16,
@@ -122,31 +180,6 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(20),
-                      child: GestureDetector(
-                        onTap: (){
-                          Route route=MaterialPageRoute(builder: (context)=>SignUpPage());
-                      Navigator.push(context, route);
-                        },
-                        child: Text(
-                          'Signup',
-                          style: TextStyle(fontSize: 16),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 20, left: 150),
-                      child: Text(
-                        'Forgot Password?',
-                        style: TextStyle(fontSize: 16),
-                      ),
-                    ),
-                  ],
                 ),
               ],
             ),
