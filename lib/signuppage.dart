@@ -1,9 +1,4 @@
-import 'dart:js';
-
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-
 import 'home.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -14,16 +9,6 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  var email;
-  var password;
-  SignUp () async{
-    FirebaseAuth firebaseAuth=FirebaseAuth.instance;
-    FirebaseUser user=(await firebaseAuth.createUserWithEmailAndPassword(email: email, password: password)).user;
-    // ignore: dead_code
-    if(user=null!){
-      Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
-    }
-  }
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -70,13 +55,11 @@ class _SignUpPageState extends State<SignUpPage> {
                         children: [
                           Text('Email Address'),
                           TextFormField(
-                            onChanged: (value){setState(() {
-                              email=value;
-                            },);},
                             decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: 'Enter email',
-                                icon: Icon(Icons.sms_outlined)),
+                              border: InputBorder.none,
+                              hintText: 'Enter email',
+                              icon: Icon(Icons.sms_outlined),
+                            ),
                           ),
                         ],
                       ),
@@ -105,9 +88,6 @@ class _SignUpPageState extends State<SignUpPage> {
                         children: [
                           Text('Enter Password'),
                           TextFormField(
-                            onChanged: (value){setState(() {
-                              password=value;
-                            },);},
                             decoration: InputDecoration(
                                 border: InputBorder.none,
                                 hintText: 'Password',
@@ -140,13 +120,11 @@ class _SignUpPageState extends State<SignUpPage> {
                         children: [
                           Text('Re-Enter Password'),
                           TextFormField(
-                            onChanged: (value){setState(() {
-                              password=value;
-                            },);},
                             decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: 'Re-Password',
-                                icon: Icon(Icons.lock)),
+                              border: InputBorder.none,
+                              hintText: 'Re-Password',
+                              icon: Icon(Icons.lock),
+                            ),
                           ),
                         ],
                       ),

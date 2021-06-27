@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:transactiosapp/home.dart';
 import 'package:transactiosapp/signuppage.dart';
@@ -110,8 +111,9 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     child: FlatButton(
                       onPressed: () {
-                         Route route=MaterialPageRoute(builder: (context)=>HomePage());
-                      Navigator.push(context, route);
+                        Route route =
+                            MaterialPageRoute(builder: (context) => HomePage());
+                        Navigator.push(context, route);
                       },
                       child: Text(
                         'Signin',
@@ -129,9 +131,10 @@ class _LoginPageState extends State<LoginPage> {
                     Padding(
                       padding: const EdgeInsets.all(20),
                       child: GestureDetector(
-                        onTap: (){
-                          Route route=MaterialPageRoute(builder: (context)=>SignUpPage());
-                      Navigator.push(context, route);
+                        onTap: () {
+                          Route route = MaterialPageRoute(
+                              builder: (context) => SignUpPage());
+                          Navigator.push(context, route);
                         },
                         child: Text(
                           'Signup',
